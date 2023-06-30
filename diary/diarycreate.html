@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./diet.css">
+    <title>Diary create</title>
+</head>
+<body>
+    <h1>Diet Diary</h1>
+    <form method="post">
+      <fieldset>
+        <legend>오늘의 일기</legend>
+        <p class="today"><label>오늘</label>
+                <input type="date" name="date" id="date"></p>
+        <table>
+            <tr>
+                
+                <td><label>오늘의 기분 </label></td>
+                <td><input type="radio" name="condition1" value="좋아" >좋아
+                    <input type="radio" name="condition1" value="우울" >우울
+                    <input type="radio" name="condition1" value="화남" >화남
+                    <input type="radio" name="condition1" value="그냥그래">그냥그래
+                </td>
+            </tr>
+            <tr>
+                <td><label>몸무게</label></td>
+                <td><input type="number" min="0" max="150" step="0.1" value="55" name="weight">kg</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><label>아침</label></td>
+                <td><img id="imgbreakfast"><br>
+                    <input type="file" id="breakfast" name="imgbreakfast"  accept="image/*" onchange="loadbreakfast(this)"> 
+                </td>
+                   
+            </tr>
+            <tr>
+                <td><input type="text"
+                    id="breakfast" name="breakfast"></td>
+            </tr>
+            <tr>
+                <td rowspan="2"><label>점심</label></td>
+                <td>
+                    <img id="imglunch"><br>
+                    <input type="file" id="lunch" name="imglunch" accept="image/*" onchange="loadlunch(this)">
+                </td>    
+                    
+            </tr>
+            <tr>
+                <td><input type="text" id="lunch" name="lunch"></td>
+            </tr>
+            
+            <tr>
+                <td rowspan="2"><label>저녁</label>
+                <td>
+                    <img id="imgsuffer"><br>
+                    <input type="file" id="supper" name="imgsupper"  accept="image/*" onchange="loadsuffer(this)">
+                </td>    
+                    
+            </tr>
+            <tr>
+                <td> <input type="text" id="supper" name="supper"></td></td>
+            </tr>
+            <tr>
+                <td><label>운동</label></td>
+                <td><input type="radio" value="했어요" name="exercise">했어요
+                    <input type="radio" value="안했어요" name="exercise">안했어요</td>
+            </tr>
+            <tr>
+                <td><label>물</label></td>
+                <td><input type="range" min="0" max="10" name="water" id="water">리터(최대10L 1L씩)</td>
+            </tr>
+            <tr>
+                <td><label>메모</label></td>
+                <td><textarea name="memo" id="memo" cols="30" rows="10" name="memo"></textarea></td>
+            </tr>
+        </table>
+      </fieldset>  
+      <button type="submit" id="submit">기록 !</button>
+    </form>
+        
+        
+      
+    <script>
+
+        function loadbreakfast(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+            document.getElementById('imgbreakfast').src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            document.getElementById('imgbreakfast').src = "";
+        }
+        }
+
+        function loadlunch(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+            document.getElementById('imglunch').src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            document.getElementById('imglunch').src = "";
+        }
+        }
+
+        function loadsuffer(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+            document.getElementById('imgsuffer').src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            document.getElementById('imgsuffer').src = "";
+        }
+        }
+    </script>
+</body>
+</html>
+

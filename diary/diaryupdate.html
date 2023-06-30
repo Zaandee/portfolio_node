@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Diary Update</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Gamja Flower', cursive;
+    font-size: 18px;
+    
+}
+body{
+    min-width: 1280px;
+}
+input{
+    border: 1px solid pink;
+    accent-color: #ff506d;
+    
+}
+body{
+    background-color: pink;
+}
+
+h1{
+    margin-top: 20px;
+    padding: 60px;
+    font-size: 80px;
+    font-family: 'Caveat', cursive;
+   
+}
+fieldset{
+    background-color: #fff;
+    border-radius: 100px;
+    margin: 100px;
+    border: 2px dashed #f84a64;
+}
+legend{
+    font-size: 30px;
+    background-color: #fff;
+    color: #000000;
+    border-radius: 10px;
+    border:2px dashed #f84a64;
+    padding: 10px;
+
+}
+
+.today{
+    
+    margin: 50px;
+    padding: 20px;
+    
+}
+
+.today>label{
+    font-size: 28px;
+    padding-right: 30px;
+    color: #ff3255;
+    font-weight: 600;
+
+}
+.today>input{
+    width: 300px;
+    border: 1px solid pink;
+    border-bottom: 1px solid #ff5e79;
+    font-size: 30px;
+    letter-spacing: 5px;
+    
+}
+table{
+    min-width: 1000px;
+    margin-left: auto; margin-right: auto;
+    margin-bottom: 50px;
+    
+    background-color: #fff;
+    
+}
+table td{
+    padding: 30px;
+    background-color: #fff;
+    border-bottom: 1px dashed #ff93939a;
+}
+img{
+    width: 200px;
+    height: 200px;
+}
+#breakfast, #lunch, #supper{
+    width: 500px;
+}
+#water{
+    width: 300px;
+}
+#memo{
+    background-color: #f0f0f0;
+    border:1px solid #ff778b;
+    width: 500px;
+    text-align: left;
+}
+button{
+    padding: 20px;
+    letter-spacing: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    background-color:#ff526c;
+    color: #f0f0f0;
+    margin-bottom: 200px;
+    border-radius: 10px;
+    border: 1px solid #00000000;
+}
+button:hover{
+    background-color: #fff;
+    color: #f84a64;
+}
+    </style>
+</head>
+<body>
+    <h1>Diet Diary</h1>
+    <form method="post">
+      <fieldset>
+        <legend>오늘의 일기</legend>
+        <p class="today"><label>오늘</label>
+                <input type="date" name="date" id="date" value="<%= data.date %>"></p>
+        <table>
+            <tr>
+                
+                <td><label>오늘의 기분 </label></td>
+                <td><input type="radio" name="condition1" value="좋아" value="<%= data.condition %>">좋아
+                    <input type="radio" name="condition1" value="우울" value="<%= data.condition %>">우울
+                    <input type="radio" name="condition1" value="화남" value="<%= data.condition %>">화남
+                    <input type="radio" name="condition1" value="그냥그래" value="<%= data.condition %>">그냥그래
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>몸무게</label></td>
+                <td><input type="number" min="0" max="150" step="0.1" value="55" name="weight" value="<%= data.weight %>">kg</td>
+            </tr>
+
+            <tr>
+                <td rowspan="2"><label>아침</label></td>
+                <td><img id="imgbreakfast"><br>
+                    <input type="file" id="breakfast" name="imgbreakfast"  accept="image/*" onchange="loadbreakfast(this)" value="<%= data.breakfast %>"> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text"
+                    id="breakfast" name="breakfast" value="<%= data.breakfast %>">
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="2"><label>점심</label></td>
+                <td>
+                    <img id="imglunch"><br>
+                    <input type="file" id="lunch" name="imglunch" accept="image/*" onchange="loadlunch(this)" value="<%= data.lunch %>">
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" id="lunch" name="lunch" value="<%= data.lunch %>"></td>
+            </tr>
+            
+            <tr>
+                <td rowspan="2"><label>저녁</label></td>
+                <td>  
+                    <img id="imgsuffer"><br>
+                    <input type="file" id="supper" name="imgsupper"  accept="image/*" onchange="loadsuffer(this)" value="<%= data.supper %>">
+                </td>
+            </tr>
+            <tr>
+                <td> <input type="text" id="supper" name="supper" value="<%= data.supper %>"></td></td>
+            </tr>
+
+            <tr>
+                <td><label>운동</label></td>
+                <td><input type="radio" value="했어요" name="exercise" value="<%= data.exercise %>">했어요
+                    <input type="radio" value="안했어요" name="exercise" value="<%= data.exercise %>">안했어요</td>
+            </tr>
+
+            <tr>
+                <td><label>물</label></td>
+                <td><input type="range" min="1" max="10" name="water" value="<%= data.water %>" id="water">리터(최대10L 1L씩)</td>
+            </tr>
+
+            <tr>
+                <td><label>메모</label></td>
+                <td><textarea name="memo" id="memo" cols="30" rows="10" name="memo"  value="<%= data.memo %>"></textarea></td>
+            </tr>
+
+        </table>
+      </fieldset>  
+      <button type="submit">기록 !</button>
+    </form>  
+</body>
+</html>

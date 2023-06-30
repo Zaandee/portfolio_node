@@ -1,0 +1,43 @@
+<!DOCTYPE html>node
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./diary.css">
+    <title>DietDiary</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="left">
+            <h1>Diet <br>Diary</h1>
+            <form action="/create" method="get">
+                <button type="submit"> 쓰기</button>
+            </form>
+        </div>
+
+        <section class="right">
+        <table>
+                <tr>
+                    <th>날짜</th>
+                    <th>몸무게</th>
+                    <th>메모</th>
+                    <th colspan="2"></th>
+                    
+                    
+                </tr>
+                <% data.forEach(function (diary, index) { %> 
+                <tr>
+                    <td><%= diary.date %></td>
+                    <td><%= diary.weight %></td>
+                    <td><%= diary.memo %></td>
+                    
+                    <td><a href="/modify/<%= diary.date %>">수정</a></td>
+                    <td><a href="/delete/<%= diary.date %>">삭제</a></td>
+                </tr>       
+                <% }); %>    
+        </table>
+        </section>
+    </div>
+    
+
+</body>
+</html>

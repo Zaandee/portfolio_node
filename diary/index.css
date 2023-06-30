@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Gamja Flower', cursive;
+    
+}
+
+body{
+    min-width: 1280px;
+    background-color: pink;
+}
+
+.dd{
+     font-size: 80px;
+    font-family: 'Caveat', cursive;
+}
